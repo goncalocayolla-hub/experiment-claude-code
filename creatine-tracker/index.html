@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Creatine Tracker</title>
+  <meta name="description" content="Track your daily creatine, keep your streak, get reminders.">
+  <meta name="theme-color" content="#0f766e">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="top">
+      <h1>Creatine Tracker</h1>
+      <p class="today" id="todayLabel"></p>
+    </header>
+
+    <section class="card hero">
+      <button id="takeBtn" class="take-btn" type="button">
+        <span class="take-icon" aria-hidden="true">💊</span>
+        <span id="takeText">I took my creatine</span>
+      </button>
+      <p id="takeStatus" class="status"></p>
+    </section>
+
+    <section class="stats">
+      <div class="stat">
+        <span class="stat-value" id="currentStreak">0</span>
+        <span class="stat-label">Current streak 🔥</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value" id="longestStreak">0</span>
+        <span class="stat-label">Longest streak</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value" id="monthRate">0%</span>
+        <span class="stat-label">This month</span>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="cal-head">
+        <button id="prevMonth" class="icon-btn" type="button" aria-label="Previous month">‹</button>
+        <h2 id="monthLabel"></h2>
+        <button id="nextMonth" class="icon-btn" type="button" aria-label="Next month">›</button>
+      </div>
+      <div class="cal-grid cal-weekdays">
+        <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+      </div>
+      <div class="cal-grid" id="calendar"></div>
+      <p class="hint">Tap a past day to mark or unmark it (e.g. if you forgot to log).</p>
+    </section>
+
+    <section class="card">
+      <h2>Reminders</h2>
+      <label class="row">
+        <span>Daily reminder time</span>
+        <input type="time" id="reminderTime" value="09:00">
+      </label>
+      <div class="btn-row">
+        <button id="enableNotif" class="btn" type="button">Enable notifications</button>
+        <button id="testNotif" class="btn ghost" type="button">Send test</button>
+      </div>
+      <p id="notifStatus" class="status small"></p>
+      <div class="divider"></div>
+      <p class="small">
+        Browser notifications only fire while the app is open (or installed and running in the background).
+        For a reminder that <strong>always</strong> reaches your phone, add a recurring event to your calendar app:
+      </p>
+      <div class="btn-row">
+        <button id="downloadIcs" class="btn ghost" type="button">Add to calendar (.ics)</button>
+        <a id="gcalLink" class="btn ghost" target="_blank" rel="noopener">Google Calendar</a>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Data</h2>
+      <p class="small">Your history is saved on this device only.</p>
+      <div class="btn-row">
+        <button id="exportBtn" class="btn ghost" type="button">Export</button>
+        <label class="btn ghost file-btn">Import<input type="file" id="importFile" accept="application/json"></label>
+        <button id="resetBtn" class="btn danger" type="button">Reset</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
